@@ -22,9 +22,8 @@ services:
       start_period: 60s
 
   flask-app:
-    build:
-      context: .
-    container_name: flask-app_2tier
+  image: learnersubha/flask_app_2tier:latest
+    container_name: flask-app
     ports:
       - "5000:5000"
     environment:
