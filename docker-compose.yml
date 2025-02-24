@@ -23,7 +23,7 @@ services:
 
   flask-app:
   image: learnersubha/flask_app_2tier:latest
-    container_name: flask-app_2tier
+    container_name: flask_app_2tier
     ports:
       - "5000:5000"
     environment:
