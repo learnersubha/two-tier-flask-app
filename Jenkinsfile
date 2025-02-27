@@ -1,29 +1,33 @@
 pipeline {
     agent any;
     
-    stages{
-        stage("Code"){
-            steps{
-                git url: "https://github.com/LondheShubham153/two-tier-flask-app.git", branch: "jenkins"
+    stages {
+        stage("code clone") {
+            steps {
+                git url: "https://github.com/learnersubha/two-tier-flask-app.git", branch: "master"
             }
         }
-        stage("Build & Test"){
-            steps{
-                sh "docker build . -t flaskapp"
+        stage("build") {
+            steps {
+                sh "docker build -t flask-app ."
             }
         }
-        stage("Push to DockerHub"){
-            steps{
-                withCredentials([usernamePassword(credentialsId:"dockerHub",passwordVariable:"dockerHubPass",usernameVariable:"dockerHubUser")]){
-                    sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
-                    sh "docker tag flaskapp ${env.dockerHubUser}/flaskapp:latest"
-                    sh "docker push ${env.dockerHubUser}/flaskapp:latest" 
+        stage("push image in dockerhub") {
+            steps {
+                withCredentials([usernamePassword(
+                    credentialsId: "dockerhubauth",
+                    passwordVariable: "dockerhubpass",
+                    usernameVariable: "dockerhubuser"
+                )]) {
+                    sh "echo ${env.dockerhubpass} | docker login -u ${env.dockerhubuser} --password-stdin"
+                    sh "docker image tag flask-app ${env.dockerhubuser}/flask-app:latest"
+                    sh "docker push ${env.dockerhubuser}/flask-app:latest"
                 }
             }
         }
-        stage("Deploy"){
-            steps{
-                sh "docker-compose down && docker-compose up -d"
+        stage("deploy") {
+            steps {
+                sh "docker compose up -d --build flask-app"
             }
         }
     }
