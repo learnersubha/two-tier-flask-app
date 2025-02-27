@@ -31,4 +31,23 @@ pipeline {
             }
         }
     }
+    
+post{
+    success{
+        script{
+            emailext from:'learnersubha0@gmail.com',
+        to:'learnersubha0@gmail.com',
+        body: 'Godde news: your build was successful',
+        subject: 'build successful'
+        }
+    }
+    failure{
+        script{
+            emailext from:'learnersubha0@gmail.com',
+        to:'learnersubha0@gmail.com',
+        body: 'Bad news: your build was failed',
+        subject: 'build failure'
+        }
+    }
+}    
 }
