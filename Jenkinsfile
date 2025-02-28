@@ -15,7 +15,6 @@ pipeline {
             steps{
                 script{
                     trivy()
-                    trivy_result("learnersubha0@gmail.com")
                 }    
             } 
             
