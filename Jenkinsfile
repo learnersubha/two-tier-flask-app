@@ -53,7 +53,13 @@ post{
                to:'learnersubha0@gmail.com',
                body: 'Bad news: your build was failed',
                subject: 'build failure'
-           }    
+           }   
+        emailext (
+            subject: "Trivy Scan Results",
+            body: "Please find attached the Trivy scan results.",
+            attachmentsPattern: "result.json",
+            to: "learnersubha0@gmail.coom" 
+       )
     }
 }    
 }
