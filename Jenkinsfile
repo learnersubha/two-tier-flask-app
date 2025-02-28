@@ -49,8 +49,7 @@ post{
     }
     failure{
            script{
-               eemailext attachlig: true,
-               from:'learnersubha0@gmail.com',
+               eemailext from:'learnersubha0@gmail.com',
                to:'learnersubha0@gmail.com',
                body: 'Bad news: your build was failed',
                subject: 'build failure'
