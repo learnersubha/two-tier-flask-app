@@ -41,10 +41,7 @@ pipeline {
 post{
     success{
         script{
-            emailext from:'learnersubha0@gmail.com',
-        to:'learnersubha0@gmail.com',
-        body: 'Godde news: your build was successful',
-        subject: 'build successful'
+           success("learnersubha0@gmail.com", "learnersubha0@gmail.com")
         }
     }
     failure{
