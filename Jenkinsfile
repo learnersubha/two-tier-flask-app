@@ -40,14 +40,10 @@ pipeline {
     
 post{
     success{
-        script{
-           success("learnersubha0@gmail.com","subha47subah@gmail.com")
-        }
+           success("learnersubha0@gmail.com","learnersubha0@gmail.com")
     }
     failure{
-        script{
-           failure("learnersubha0@gmail.com","subha47subah@gmail.com")         
-        }
+           failure("learnersubha0@gmail.com","learnersubha0@gmail.com")         
     }
 }    
 }
