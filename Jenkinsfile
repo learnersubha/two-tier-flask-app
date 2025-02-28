@@ -40,13 +40,24 @@ pipeline {
     
 post{
     success{
-        script{
-           success("learnersubha0@gmail.com","learnersubha0@gmail.com")
+        steps
+          script{
+              emailext from:'learnersubha0@gmail.com',
+              to:'learnersubha0@gmail.com',
+              body:'Good news: your build was successful',
+              subject:'build successful'
+          }
         }   
     }
     failure{
-        script{
-           failure("learnersubha0@gmail.com","learnersubha0@gmail.com")
+        steps{
+           script{
+               emailext from:'learnersubha0@gmail.com',
+              to:'learnersubha0@gmail.com',
+              body:'Bad news: your build failed',
+              subject:'build failed'
+           }
+           
         }   
     }
 }    
