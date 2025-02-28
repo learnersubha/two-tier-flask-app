@@ -10,7 +10,9 @@ pipeline {
         }
         stage("trivy scan"){
             steps{
-                sh "trivy fs . -o result.json"
+                script{
+                    trivy()
+                }
             }
         }
         stage("build") {
