@@ -3,15 +3,21 @@ pipeline {
     agent {label "dev"};
     
     stages {
-        stage("code clone") {
-            script{
+        stage("code clone"){
+            steps{
+                script{
                 clone("https://github.com/learnersubha/two-tier-flask-app.git","master")
+                }
+                
             }
         }
         stage("trivy scan"){
-             script{
+            steps{
+                script{
                     trivy()
-            }
+                }    
+            } 
+            
         }
         stage("build") {
             steps {
