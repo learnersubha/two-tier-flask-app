@@ -21,7 +21,7 @@ pipeline {
         }
         stage("build") {
             steps {
-                sh "docker buil -t flask-app ."
+                sh "docker build -t flask-app ."
             }
         }
         stage("push image in dockerhub") {
