@@ -26,15 +26,9 @@ pipeline {
         }
         stage("push image in dockerhub") {
             steps {
-                withCredentials([usernamePassword(
-                    credentialsId: "dockerhubauth",
-                    passwordVariable: "dockerhubpass",
-                    usernameVariable: "dockerhubuser"
-                )]) {
-                    sh "echo ${env.dockerhubpass} | docker login -u ${env.dockerhubuser} --password-stdin"
-                    sh "docker image tag flask-app ${env.dockerhubuser}/flask-app:latest"
-                    sh "docker push ${env.dockerhubuser}/flask-app:latest"
-                }
+               script{
+                   docker_push("dockerhubauth","flask-app")
+               }
             }
         }
         stage("deploy") {
