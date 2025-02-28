@@ -40,7 +40,7 @@ pipeline {
     
 post{
     success{
-        steps
+        steps{
           script{
               emailext from:'learnersubha0@gmail.com',
               to:'learnersubha0@gmail.com',
