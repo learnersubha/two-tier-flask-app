@@ -14,7 +14,8 @@ pipeline {
         stage("trivy scan"){
             steps{
                 script{
-                    trivy("learnersubha0@gmail.com")
+                    trivy()
+                    trivy_result("learnersubha0@gmail.com")
                 }    
             } 
             
