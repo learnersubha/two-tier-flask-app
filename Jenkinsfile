@@ -1,4 +1,4 @@
-@libray("shared") _
+@Library("shared") _
 pipeline {
     agent {label "dev"};
     
