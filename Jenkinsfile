@@ -49,7 +49,7 @@ post{
     }
     failure{
            script{
-               emailext attachlog :true,
+               emailext attachlog: true,
                from:'learnersubha0@gmail.com',
                to:'learnersubha0@gmail.com',
                body: 'Bad news: your build was failed',
