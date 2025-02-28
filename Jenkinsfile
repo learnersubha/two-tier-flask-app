@@ -9,10 +9,8 @@ pipeline {
             }
         }
         stage("trivy scan"){
-            steps{
-                script{
+             script{
                     trivy()
-                }
             }
         }
         stage("build") {
