@@ -1,5 +1,6 @@
 @Library("shared") _
 pipeline {
+    
     agent {label "dev"};
     
     stages {
@@ -7,8 +8,7 @@ pipeline {
             steps{
                 script{
                     clone("https://github.com/learnersubha/two-tier-flask-app.git", "master")
-                }
-                
+                } 
             }
         }
         stage("trivy scan"){
