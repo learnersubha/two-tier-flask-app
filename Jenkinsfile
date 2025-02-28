@@ -6,7 +6,7 @@ pipeline {
         stage("code clone"){
             steps{
                 script{
-                clone("https://github.com/learnersubha/two-tier-flask-app.git","master")
+                    clone("https://github.com/learnersubha/two-tier-flask-app.git", "master")
                 }
                 
             }
